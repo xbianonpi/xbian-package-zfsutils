@@ -1,0 +1,11 @@
+Origin: XBian
+Package: __PKGNAME__
+Version: __VERSION__
+Section: utils
+Priority: optional
+Architecture: armhf
+Depends: ${shlibs:Depends}
+Provides: zfsutils
+Conflicts: zfsutils
+Maintainer: mk01 <development@xbian.org>
+Description: zfsutils package (__ARCHBRANCH__)

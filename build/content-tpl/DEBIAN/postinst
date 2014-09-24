@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ $1 == "configure" ]; then
+    libtool --finish /usr/lib >/dev/null 2>&1
+    libtool --finish /lib >/dev/null 2>&1
+    ldconfig > /dev/null 2>&1
+fi
+
+exit 0

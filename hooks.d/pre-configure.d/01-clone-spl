@@ -1,0 +1,16 @@
+
+if [ -d .spl ]; then
+    cd .spl
+
+    shaloc=$(git log -n1 --format=oneline | awk '{print $1}')
+    sharem=$(git ls-remote -h git://github.com/zfsonlinux/spl.git master | awk '{print $1}')
+
+    if [ $sharem != $shaloc ]; then
+        git clean -dfx  >/dev/null 2>&1
+        git fetch
+        git reset --hard origin/master
+    fi
+else
+    git clone -b master --depth=1 --single-branch git://github.com/zfsonlinux/spl.git .spl
+    cd .spl
+fi

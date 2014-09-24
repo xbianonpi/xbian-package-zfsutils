@@ -1,0 +1,6 @@
+
+[ -d ../build/$config_platform_branch/working/.spl ] || return 1
+
+ddir=$(readlink -f ./)
+cd ../build/$config_platform_branch/working/.spl
+$config_build_env make install DESTDIR=$ddir

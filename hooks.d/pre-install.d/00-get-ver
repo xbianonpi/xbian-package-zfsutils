@@ -1,0 +1,5 @@
+
+ver="$(grep Version\: META | awk '{print $2}')"
+ver="$ver-$(grep Release\: META | awk '{print $2}')"
+
+sed -i "s%config_deb_version=.*%config_deb_version=$ver%g" ../config_pkgver
