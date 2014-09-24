@@ -3,7 +3,8 @@ md5sums
 content/*
 build/*/working/*
 build.*
-*.img
+*.deb
 ._*
-build-root-dirs/*
-*.img.xz
+src_repo_hash_HEAD
+config_pkgver
+config_aptdir
