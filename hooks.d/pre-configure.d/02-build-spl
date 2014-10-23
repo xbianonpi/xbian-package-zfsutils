@@ -3,9 +3,10 @@ if [ -d .spl ]; then
 	for d in .spl; do (
 	echo "BUILDING $d... Please wait" 
 	cd $d; runconfigure=0
+	( export $config_build_env 2>/dev/null; ) && export $config_build_env || :
 	if [ ! -e ./configure ]; then
 		echo ...running autogen.sh
-		./autogen.sh >/dev/null || :
+		eval $config_build_env ./autogen.sh >/dev/null || :
 		runconfigure=1
 	fi
 	if [ $runconfigure -eq 0 ]; then
@@ -15,7 +16,6 @@ if [ -d .spl ]; then
 			runconfigure=1
 		fi
 	fi
-	( export $config_build_env 2>/dev/null; ) && export $config_build_env || :
 	if [ $runconfigure -eq 1 ]; then
 		echo ...running configure
 		eval $config_build_env ./configure --with-config=user --localstatedir=/var --sysconfdir=/etc --prefix=/usr
